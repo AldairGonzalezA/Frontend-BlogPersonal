@@ -26,3 +26,14 @@ export const getPublications = async (id) => {
         }
     }
 }
+
+export const createComment = async (data) => {
+    try {
+        return await apiClient.post(`/publication/comment`,data);
+    } catch (e) {
+        return {
+            error: true,
+            e
+        }
+    }
+}

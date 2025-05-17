@@ -2,7 +2,7 @@ import { Card, CardHeader, CardBody, CardFooter,SimpleGrid, Heading, Button,Text
 import { useDisclosure } from '@chakra-ui/react';
 import { CommentsModal } from '../Comment/CommentModal';
 
-export const PublicationCard = ({title,course,mainText,comments, publicationId}) => {
+export const PublicationCard = ({title,datePublication,mainText,comments, publicationId}) => {
     const  { isOpen, onOpen, onClose} = useDisclosure(); 
     return (
         <SimpleGrid spacing={4} templateColumns='repeat(auto-fill, minmax(200px, 1fr))'>
@@ -13,6 +13,13 @@ export const PublicationCard = ({title,course,mainText,comments, publicationId})
                 <CardBody>
                 <Text>{mainText}</Text>
                 </CardBody>
+                <Text>
+                    {new Date(datePublication).toLocaleDateString("es-ES",{
+                        day: "2-digit",
+                        month: 'long',
+                        year: 'numeric'
+                    })}
+                </Text>
                 <CardFooter>
                 <Button onClick={onOpen}>View comments</Button>
 
@@ -21,6 +28,7 @@ export const PublicationCard = ({title,course,mainText,comments, publicationId})
                     onClose={onClose}
                     comments={comments}
                     publicationId={publicationId}
+                    title={title}
                 />
                 </CardFooter>
             </Card>

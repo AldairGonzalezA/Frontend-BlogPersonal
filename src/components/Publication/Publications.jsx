@@ -75,6 +75,7 @@ export const Publications = () => {
                     course={pub.course}
                     mainText={pub.mainText}
                     comments={pub.comments}
+                    datePublication={pub.datePublication}
                     publicationId={pub._id}
                     />
                 ))

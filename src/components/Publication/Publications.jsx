@@ -38,7 +38,7 @@ export const Publications = () => {
         : publications;
 
     return (
-        <Box>
+        <Box bg="#005C53">
             <HStack spacing={4} mb="20px" justifyContent="center">
                 <Input
                 variant="outline"
@@ -62,7 +62,7 @@ export const Publications = () => {
                 />
             </HStack>
 
-            <Box>
+            <Box display="flex" m={4} p={2}>
                 {filteredPublications.length === 0 ? (
                 <Box textAlign="center" mt="20px" color="gray.500">
                 No posts found.
@@ -75,7 +75,7 @@ export const Publications = () => {
                     course={pub.course}
                     mainText={pub.mainText}
                     comments={pub.comments}
-                    datePublication={pub.datePublication}
+                    datePublications={pub.datePublications}
                     publicationId={pub._id}
                     />
                 ))

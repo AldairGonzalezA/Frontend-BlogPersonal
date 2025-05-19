@@ -47,10 +47,14 @@ export const CommentsModal = ({isOpen,onClose, comments = [], title}) => {
 
         if (!formData.text.trim()) return;
 
-        
-        await createComment(formData);
+        const commentData = {
+            ...formData,
+           
+            ...(formData.publisher.trim() === "" && { publisher: undefined }),
+        };
+
+        await createComment(commentData);
         await getPublications(id);
-        // Limpia los campos excepto el título
         setFormData((prev) => ({
             ...prev,
             publisher: '',
@@ -59,19 +63,21 @@ export const CommentsModal = ({isOpen,onClose, comments = [], title}) => {
     };
 
     return(
-         <Modal isOpen={isOpen} onClose={onClose} size="xl">
+         <Modal isOpen={isOpen} onClose={onClose} size="xl" bg="#D6D58E">
             <ModalOverlay />
-            <ModalContent>
+            <ModalContent bg="#042940" color="white">
                 <ModalHeader>Comentarios</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
                 <VStack align="stretch" spacing={3} w="100%">
                     {comments.length === 0 ? (
                         <Text>No hay comentarios aún.</Text>
-                    ) : (
-                        comments.map((c) => (
-                        <VStack key={c._id}>
-                            <Card w="100%">
+                        ) : (
+                        [...comments]
+                            .sort((a, b) => new Date(b.datePublication) - new Date(a.datePublication))
+                            .map((c) => (
+                            <VStack key={c._id}>
+                                <Card w="100%" bg="#005C53" color="white">
                                 <CardHeader display="flex" alignItems="center" gap={4}>
                                     <Avatar src='https://bit.ly/broken-link' />
                                     <Heading size='md'> {c.publisher}</Heading>
@@ -79,16 +85,16 @@ export const CommentsModal = ({isOpen,onClose, comments = [], title}) => {
                                 <CardBody>
                                     <Text>{c.text}</Text>
                                     <Text>
-                                        {new Date(c.datePublication).toLocaleDateString("es-ES", {
-                                            day: "2-digit",
-                                            month: "long",
-                                            year: "numeric"
-                                        })}
+                                    {new Date(c.datePublication).toLocaleDateString("es-ES", {
+                                        day: "2-digit",
+                                        month: "long",
+                                        year: "numeric"
+                                    })}
                                     </Text>
                                 </CardBody>
-                            </Card>
-                        </VStack>
-                        ))
+                                </Card>
+                            </VStack>
+                         ))
                     )}
                 </VStack>
                 
@@ -103,6 +109,8 @@ export const CommentsModal = ({isOpen,onClose, comments = [], title}) => {
                             placeholder="Your name or vacío"
                             value={formData.publisher}
                             onChange={handleChange}
+                            bg="white"
+                            color="black"
                         />
                         </FormControl>
 
@@ -113,6 +121,8 @@ export const CommentsModal = ({isOpen,onClose, comments = [], title}) => {
                             placeholder="Write a comment"
                             value={formData.text}
                             onChange={handleChange}
+                            bg="white"
+                            color="black"
                         />
                         </FormControl>
 

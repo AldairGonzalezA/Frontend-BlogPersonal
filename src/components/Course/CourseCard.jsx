@@ -10,7 +10,7 @@ export const CourseCard = ({ id, course, description, image }) => {
     } 
 
     return (
-        <Card maxW='sm' margin={4} backgroundColor="#D2E8E3">
+        <Card maxW='sm' margin={4} backgroundColor="#042940" color='white'>
             <CardBody >
                 <Image
                 src={image}

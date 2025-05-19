@@ -1,4 +1,4 @@
-import { Input, Box, IconButton,HStack } from '@chakra-ui/react';
+import { Input, Box, IconButton,HStack, } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
 import { CourseCard } from './CourseCard.jsx';
@@ -6,7 +6,6 @@ import { CourseCard } from './CourseCard.jsx';
 export const Courses = ({courses}) => {
     const [searchQuery, setSearchQuery] = useState('');
     const [searchTerm, setSearchTerm] = useState('');
-
     const handleSearchTermChange = (e) => {
         setSearchTerm(e.target.value);
     }
@@ -21,7 +20,7 @@ export const Courses = ({courses}) => {
     )
     : courses;
     return(
-        <Box backgroundColor="#F8F6F0">
+        <Box backgroundColor="#005C53">
             <HStack spacing={4}>
                 <Input variant='outline'
                      placeholder='Search Course'
@@ -32,12 +31,13 @@ export const Courses = ({courses}) => {
                      border="1px"
                      backgroundColor="white"
                      mt="20px"
+                     color='black'
                     />
                     <IconButton aria-label='Search database' icon={<SearchIcon />} maxW="30px"
                         onClick={handleSearch}
                     />
             </HStack>
-            <Box display="flex" m={4} p={4}>
+            <Box display="flex" m={4} p={5}>
                 {filteredCourses.map((c) => (
                     <CourseCard
                     key={c._id}

@@ -20,7 +20,13 @@ export const Courses = ({courses}) => {
     )
     : courses;
     return(
-        <Box backgroundColor="#005C53">
+        <Box bg="#005C53" 
+        minH="100vh" 
+        w="100vw" 
+        p={4} 
+        boxSizing="border-box"
+        overflow='hidden'
+        >
             <HStack spacing={4}>
                 <Input variant='outline'
                      placeholder='Search Course'

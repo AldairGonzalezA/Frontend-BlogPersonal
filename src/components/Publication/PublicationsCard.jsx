@@ -5,7 +5,7 @@ import { CommentsModal } from '../Comment/CommentModal';
 export const PublicationCard = ({title,datePublications,mainText,comments, publicationId}) => {
     const  { isOpen, onOpen, onClose} = useDisclosure(); 
     return (
-        <SimpleGrid spacing={4} templateColumns='repeat(auto-fill, minmax(200px, 1fr))'>
+        <SimpleGrid spacing={4} templateColumns='repeat(auto-fill, minmax(250px, 1fr))'>
             <Card maxW='sm' margin={4} bg="#042940" color="white">
                 <CardHeader>
                 <Heading size='md'>{title}</Heading>

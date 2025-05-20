@@ -4,8 +4,15 @@ import { Route,Routes } from 'react-router-dom';
 import { useEffect } from 'react';
 import { Courses } from './components/Course/Course.jsx';
 import { Publications } from './components/Publication/Publications.jsx';
-import './App.css'
+import { Box } from '@chakra-ui/react';
 
+function Footer() {
+  return (
+    <Box as="footer" bg="gray.200" p={4} textAlign="center">
+      <Text fontSize="sm">© 2025 Mi Sitio. Todos los derechos reservados.</Text>
+    </Box>
+  );
+}
 function App() {
 
   const { getCourses,allCourses} = useCourses();
@@ -16,7 +23,8 @@ function App() {
 
   return (
     <>
-      <Menu/>
+      <Box>
+      <Menu />
       <Routes>
         <Route
           path="/"
@@ -30,6 +38,7 @@ function App() {
         />
         <Route path="/publications/:id" element={<Publications />} />
       </Routes>
+    </Box>
   </>
   )
 }

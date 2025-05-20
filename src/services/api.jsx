@@ -37,3 +37,25 @@ export const createComment = async (data) => {
         }
     }
 }
+
+export const updateComment = async (id, data) => {
+    try {
+        return await apiClient.put(`/publication/comment/${id}`, data);
+    } catch (error) {
+        return {
+            error: true,
+            e
+        }
+    }
+}
+
+export const deleteComment = async (id) => {
+    try {
+        return await apiClient.delete(`/publication/comment/${id}`);
+    } catch (e) {
+        return {
+            error: true,
+            e
+        }
+    }
+}

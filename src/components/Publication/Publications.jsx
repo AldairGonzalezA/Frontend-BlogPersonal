@@ -38,7 +38,12 @@ export const Publications = () => {
         : publications;
 
     return (
-        <Box bg="#005C53">
+        <Box bg="#005C53" 
+        minH="100vh" 
+        w="100vw" 
+        p={4} 
+        boxSizing="border-box"
+        overflow='hidden'>
             <HStack spacing={4} mb="20px" justifyContent="center">
                 <Input
                 variant="outline"
